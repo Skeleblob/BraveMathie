@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://j4e0j6ctqbbg"]
 
-[ext_resource type="Script" uid="uid://i7fe5hobasqd" path="res://SpriteSheets/Scenes/game/player.gd" id="1_6n8kb"]
+[ext_resource type="Script" uid="uid://i7fe5hobasqd" path="res://SpriteSheets/game/player.gd" id="1_6n8kb"]
 [ext_resource type="Texture2D" uid="uid://db2vw0qhj74ko" path="res://SpriteSheets/Player/MathNoobBack.png" id="1_l4idp"]
 [ext_resource type="Texture2D" uid="uid://xyjbrfa8gpsb" path="res://SpriteSheets/Player/MathNoob.png" id="2_2ylcj"]
 [ext_resource type="Texture2D" uid="uid://q4rdt52bff4w" path="res://SpriteSheets/Player/MathNoobLeft.png" id="3_8r73i"]

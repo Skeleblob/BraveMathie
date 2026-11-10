@@ -6,9 +6,12 @@ var animSprite : AnimatedSprite2D
 func _ready() -> void:
 	animSprite = $AnimatedSprite2D
 	
+	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	
+func _on_spawn(spawn_position: Vector2, _direction: String) -> void:
+	global_position = spawn_position
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	velocity = Vector2()
 	
 	if Input.is_action_pressed("walk_front"):

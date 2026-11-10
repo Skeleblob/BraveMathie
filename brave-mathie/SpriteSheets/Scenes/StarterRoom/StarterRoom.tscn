@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://i6nkcja5ce65"]
 
 [ext_resource type="Texture2D" uid="uid://x63r7clmkcnp" path="res://SpriteSheets/Scenes/StarterRoom/Lobby.png" id="1_pse63"]
-[ext_resource type="Script" uid="uid://bpxiulw6tyspw" path="res://SpriteSheets/Scenes/StarterRoom/top_door.gd" id="2_78l16"]
+[ext_resource type="PackedScene" uid="uid://j4e0j6ctqbbg" path="res://SpriteSheets/game/Player.tscn" id="2_vd3n1"]
+[ext_resource type="Script" uid="uid://cxpef17y8ncwi" path="res://Scripts/Level.gd" id="3_level"]
+[ext_resource type="PackedScene" uid="uid://cxky8h3pniwdv" path="res://Scripts/Doors/Doors.tscn" id="4_door"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6iae"]
 size = Vector2(1150, 105)
@@ -15,10 +17,8 @@ size = Vector2(1150, 105)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fofcl"]
 size = Vector2(120, 650)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeiif"]
-size = Vector2(165, 142)
-
 [node name="stage0" type="Node2D" unique_id=1560415530]
+script = ExtResource("3_level")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=298818482]
 texture_filter = 1
@@ -50,10 +50,16 @@ shape = SubResource("RectangleShape2D_k08fl")
 position = Vector2(1111, 321)
 shape = SubResource("RectangleShape2D_fofcl")
 
-[node name="TopDoor" type="StaticBody2D" parent="." unique_id=155554797]
-script = ExtResource("2_78l16")
-target_scene = "uid://cir4xbu33dgyu"
+[node name="player" parent="." unique_id=548740340 instance=ExtResource("2_vd3n1")]
+position = Vector2(474, 215)
+scale = Vector2(1.75, 1.75)
+motion_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopDoor" unique_id=2126857683]
-position = Vector2(568.5, 27)
-shape = SubResource("RectangleShape2D_yeiif")
+[node name="TopDoor" parent="." instance=ExtResource("4_door")]
+position = Vector2(511, -24)
+destination_level_tag = "TopRoom"
+destination_door_tag = "Top"
+spawn_direction = "down"
+
+[node name="Spawn" parent="TopDoor" index="1"]
+position = Vector2(58, 180)

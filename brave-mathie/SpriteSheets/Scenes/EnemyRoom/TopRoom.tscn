@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cir4xbu33dgyu"]
 
 [ext_resource type="Texture2D" uid="uid://dwuddnximdwpr" path="res://SpriteSheets/Scenes/EnemyRoom/Toproom.png" id="1_ucn2r"]
+[ext_resource type="PackedScene" uid="uid://cxky8h3pniwdv" path="res://Scripts/Doors/Doors.tscn" id="2_1kmu6"]
+[ext_resource type="PackedScene" uid="uid://j4e0j6ctqbbg" path="res://SpriteSheets/game/Player.tscn" id="3_3ww80"]
+[ext_resource type="Script" uid="uid://cxpef17y8ncwi" path="res://Scripts/Level.gd" id="4_level"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqjsd"]
 size = Vector2(1150, 105)
@@ -14,7 +17,8 @@ size = Vector2(1150, 105)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pak"]
 size = Vector2(120, 650)
 
-[node name="EnemyRoom" type="Node2D" unique_id=270535472]
+[node name="TopRoom" type="Node2D" unique_id=270535472]
+script = ExtResource("4_level")
 
 [node name="Toproom" type="Sprite2D" parent="." unique_id=1876911375]
 texture_filter = 1
@@ -45,3 +49,22 @@ shape = SubResource("RectangleShape2D_ax8mu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topWallBody" unique_id=1905710767]
 position = Vector2(1111, 321)
 shape = SubResource("RectangleShape2D_u3pak")
+
+[node name="Node" type="Node" parent="." unique_id=1649709]
+
+[node name="Doors" parent="Node" unique_id=1765760922 instance=ExtResource("2_1kmu6")]
+position = Vector2(509, 535)
+destination_level_tag = "StarterRoom"
+destination_door_tag = "Starter"
+
+[node name="CollisionShape2D" parent="Node/Doors" index="0" unique_id=130718312]
+position = Vector2(59, 81)
+
+[node name="Spawn" parent="Node/Doors" index="1" unique_id=79308912]
+position = Vector2(57, -130)
+
+[node name="player" parent="." unique_id=548740340 instance=ExtResource("3_3ww80")]
+scale = Vector2(1.75, 1.75)
+motion_mode = 1
+
+[editable path="Node/Doors"]

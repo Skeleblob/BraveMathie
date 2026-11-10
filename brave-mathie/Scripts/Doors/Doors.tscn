@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://cxky8h3pniwdv"]
 
-[ext_resource type="Script" uid="uid://bugiq0v3fpdgr" path="res://SpriteSheets/Scenes/Doors/doors.gd" id="1_34c7g"]
+[ext_resource type="Script" uid="uid://bugiq0v3fpdgr" path="res://Scripts/Doors/doors.gd" id="1_34c7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeiif"]
-size = Vector2(92, 106)
+size = Vector2(130, 143)
 
 [node name="Doors" type="Area2D" unique_id=1765760922]
 script = ExtResource("1_34c7g")
-destination_level_tag = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=130718312]
-position = Vector2(36, 43)
+position = Vector2(55, 61.5)
 shape = SubResource("RectangleShape2D_yeiif")
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=79308912]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
