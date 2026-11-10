@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqh1qjho5xdqt"]
 
-[ext_resource type="PackedScene" uid="uid://i6nkcja5ce65" path="res://SpriteSheets/Scenes/BossRoom/stage_0.tscn" id="1_2vr2y"]
+[ext_resource type="PackedScene" uid="uid://i6nkcja5ce65" path="res://SpriteSheets/Scenes/StarterRoom/StarterRoom.tscn" id="1_2vr2y"]
 [ext_resource type="PackedScene" uid="uid://j4e0j6ctqbbg" path="res://SpriteSheets/Scenes/game/Player.tscn" id="2_1o83b"]
 
 [node name="main" type="Node2D" unique_id=739777682]

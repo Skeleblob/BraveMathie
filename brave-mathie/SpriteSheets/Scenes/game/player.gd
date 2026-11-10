@@ -5,6 +5,8 @@ var animSprite : AnimatedSprite2D
 
 func _ready() -> void:
 	animSprite = $AnimatedSprite2D
+	
+	
 
 func _process(delta: float) -> void:
 	velocity = Vector2()
@@ -34,3 +36,6 @@ func _process(delta: float) -> void:
 	velocity = velocity.normalized()
 	velocity *= 175 * scale.x
 	move_and_slide()
+
+	
+	

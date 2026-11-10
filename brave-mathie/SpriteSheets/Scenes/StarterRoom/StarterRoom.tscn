@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://i6nkcja5ce65"]
 
 [ext_resource type="Texture2D" uid="uid://x63r7clmkcnp" path="res://SpriteSheets/Scenes/StarterRoom/Lobby.png" id="1_pse63"]
+[ext_resource type="Script" uid="uid://bpxiulw6tyspw" path="res://SpriteSheets/Scenes/StarterRoom/top_door.gd" id="2_78l16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6iae"]
 size = Vector2(1150, 105)
@@ -13,6 +14,9 @@ size = Vector2(1150, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fofcl"]
 size = Vector2(120, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeiif"]
+size = Vector2(165, 142)
 
 [node name="stage0" type="Node2D" unique_id=1560415530]
 
@@ -45,3 +49,11 @@ shape = SubResource("RectangleShape2D_k08fl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topWallBody" unique_id=1245470490]
 position = Vector2(1111, 321)
 shape = SubResource("RectangleShape2D_fofcl")
+
+[node name="TopDoor" type="StaticBody2D" parent="." unique_id=155554797]
+script = ExtResource("2_78l16")
+target_scene = "uid://cir4xbu33dgyu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopDoor" unique_id=2126857683]
+position = Vector2(568.5, 27)
+shape = SubResource("RectangleShape2D_yeiif")

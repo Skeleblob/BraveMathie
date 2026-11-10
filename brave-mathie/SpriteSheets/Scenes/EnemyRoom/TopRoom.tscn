@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cir4xbu33dgyu"]
+
+[ext_resource type="Texture2D" uid="uid://dwuddnximdwpr" path="res://SpriteSheets/Scenes/EnemyRoom/Toproom.png" id="1_ucn2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqjsd"]
+size = Vector2(1150, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75x5l"]
+size = Vector2(120, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax8mu"]
+size = Vector2(1150, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3pak"]
+size = Vector2(120, 650)
+
+[node name="EnemyRoom" type="Node2D" unique_id=270535472]
+
+[node name="Toproom" type="Sprite2D" parent="." unique_id=1876911375]
+texture_filter = 1
+position = Vector2(575, 325)
+scale = Vector2(3.85, 3.25)
+texture = ExtResource("1_ucn2r")
+
+[node name="BottomWallBody" type="StaticBody2D" parent="." unique_id=295516943]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWallBody" unique_id=337799947]
+position = Vector2(578, 33)
+shape = SubResource("RectangleShape2D_sqjsd")
+
+[node name="leftWallBody" type="StaticBody2D" parent="." unique_id=1466945526]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftWallBody" unique_id=1128928010]
+position = Vector2(38, 326)
+shape = SubResource("RectangleShape2D_75x5l")
+
+[node name="rightWallBody" type="StaticBody2D" parent="." unique_id=490124128]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightWallBody" unique_id=770997230]
+position = Vector2(572, 602)
+shape = SubResource("RectangleShape2D_ax8mu")
+
+[node name="topWallBody" type="StaticBody2D" parent="." unique_id=376158483]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topWallBody" unique_id=1905710767]
+position = Vector2(1111, 321)
+shape = SubResource("RectangleShape2D_u3pak")
