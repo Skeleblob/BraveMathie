@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://bqh1qjho5xdqt"]
 
 [ext_resource type="PackedScene" uid="uid://i6nkcja5ce65" path="res://SpriteSheets/Scenes/StarterRoom/StarterRoom.tscn" id="1_2vr2y"]
+[ext_resource type="PackedScene" uid="uid://bw6v7bpkg4no7" path="res://SpriteSheets/game/hud.tscn" id="2_ojw41"]
 
 [node name="main" type="Node2D" unique_id=739777682]
 
 [node name="stage0" parent="." unique_id=1560415530 instance=ExtResource("1_2vr2y")]
+
+[node name="Hud" parent="." unique_id=1251275405 instance=ExtResource("2_ojw41")]

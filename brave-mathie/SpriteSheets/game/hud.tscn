@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bw6v7bpkg4no7"]
+
+[ext_resource type="Script" uid="uid://da0c6qmcsgpvg" path="res://hud.gd" id="1_8y5c0"]
+[ext_resource type="Texture2D" uid="uid://dr7m0e1l1ki7b" path="res://icon.svg" id="2_lmjyp"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1251275405]
+script = ExtResource("1_8y5c0")
+
+[node name="InventoryContainer" type="CenterContainer" parent="." unique_id=1173887699]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackgroundTexture" type="TextureRect" parent="InventoryContainer" unique_id=1378918601]
+layout_mode = 2
+texture = ExtResource("2_lmjyp")
