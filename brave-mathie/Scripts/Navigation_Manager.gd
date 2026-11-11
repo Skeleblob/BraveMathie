@@ -3,6 +3,7 @@ extends Node
 
 const scene_StarterRoom = preload("res://SpriteSheets/Scenes/StarterRoom/StarterRoom.tscn")
 const scene_TopRoom = preload("res://SpriteSheets/Scenes/EnemyRoom/TopRoom.tscn")
+const scene_LeftRoom = preload("res://SpriteSheets/Scenes/ItemRoom/LeftRoom.tscn")
 
 signal on_trigger_player_spawn
 
@@ -16,6 +17,8 @@ func go_to_level(level_tag, destination_tag):
 			scene_to_load = scene_StarterRoom
 		"TopRoom":
 			scene_to_load = scene_TopRoom
+		"LeftRoom":
+			scene_to_load = scene_LeftRoom	
 			
 	if scene_to_load != null:
 		spawn_door_tag = destination_tag

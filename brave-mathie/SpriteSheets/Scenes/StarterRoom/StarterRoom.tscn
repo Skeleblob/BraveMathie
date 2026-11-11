@@ -51,15 +51,29 @@ position = Vector2(1111, 321)
 shape = SubResource("RectangleShape2D_fofcl")
 
 [node name="player" parent="." unique_id=548740340 instance=ExtResource("2_vd3n1")]
-position = Vector2(474, 215)
+position = Vector2(575.99994, 287)
 scale = Vector2(1.75, 1.75)
 motion_mode = 1
 
-[node name="TopDoor" parent="." instance=ExtResource("4_door")]
+[node name="TopDoor" parent="." unique_id=335304242 instance=ExtResource("4_door")]
 position = Vector2(511, -24)
+door_tag = "TopDoor"
 destination_level_tag = "TopRoom"
-destination_door_tag = "Top"
+destination_door_tag = "TopDoor2"
 spawn_direction = "down"
 
-[node name="Spawn" parent="TopDoor" index="1"]
-position = Vector2(58, 180)
+[node name="Spawn" parent="TopDoor" index="1" unique_id=79308912]
+position = Vector2(59, 163)
+
+[node name="Doors" parent="." unique_id=1765760922 instance=ExtResource("4_door")]
+position = Vector2(14, 264)
+door_tag = "LeftDoor"
+destination_level_tag = "LeftRoom"
+destination_door_tag = "RightDoor"
+spawn_direction = "right"
+
+[node name="Spawn" parent="Doors" index="1" unique_id=79308912]
+position = Vector2(150, 63)
+
+[editable path="TopDoor"]
+[editable path="Doors"]

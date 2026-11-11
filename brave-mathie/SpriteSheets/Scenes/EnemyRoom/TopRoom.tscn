@@ -54,8 +54,9 @@ shape = SubResource("RectangleShape2D_u3pak")
 
 [node name="Doors" parent="Node" unique_id=1765760922 instance=ExtResource("2_1kmu6")]
 position = Vector2(509, 535)
+door_tag = "TopDoor2"
 destination_level_tag = "StarterRoom"
-destination_door_tag = "Starter"
+destination_door_tag = "TopDoor"
 
 [node name="CollisionShape2D" parent="Node/Doors" index="0" unique_id=130718312]
 position = Vector2(59, 81)
@@ -64,6 +65,7 @@ position = Vector2(59, 81)
 position = Vector2(57, -130)
 
 [node name="player" parent="." unique_id=548740340 instance=ExtResource("3_3ww80")]
+position = Vector2(555.99994, 423.99997)
 scale = Vector2(1.75, 1.75)
 motion_mode = 1
 
