@@ -1,15 +1,31 @@
 [gd_scene format=3 uid="uid://bw6v7bpkg4no7"]
 
 [ext_resource type="Script" uid="uid://da0c6qmcsgpvg" path="res://hud.gd" id="1_8y5c0"]
-[ext_resource type="Texture2D" uid="uid://dr7m0e1l1ki7b" path="res://icon.svg" id="2_lmjyp"]
+[ext_resource type="Texture2D" uid="uid://yivnn3wvmchv" path="res://misc/Whitepixelfornoahbaby.png" id="2_8y5c0"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1251275405]
 script = ExtResource("1_8y5c0")
 
 [node name="InventoryContainer" type="CenterContainer" parent="." unique_id=1173887699]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(200, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BackgroundTexture" type="TextureRect" parent="InventoryContainer" unique_id=1378918601]
+modulate = Color(1, 1, 1, 0.6392157)
+self_modulate = Color(0.5996037, 0.5996037, 0.5996037, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
-texture = ExtResource("2_lmjyp")
+texture = ExtResource("2_8y5c0")

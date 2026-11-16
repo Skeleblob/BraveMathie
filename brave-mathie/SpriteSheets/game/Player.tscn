@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b25oyvlqsgofv" path="res://SpriteSheets/Player/MathNoobBackRun.png" id="6_njfb8"]
 [ext_resource type="Texture2D" uid="uid://btjdl5a4u3snp" path="res://SpriteSheets/Player/RunningRightt.png" id="8_l3ms2"]
 [ext_resource type="Texture2D" uid="uid://j4k8pskf4mp2" path="res://SpriteSheets/Player/RunningLeftt.png" id="8_o7g0r"]
+[ext_resource type="PackedScene" uid="uid://bw6v7bpkg4no7" path="res://SpriteSheets/game/hud.tscn" id="10_h8cv0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igelr"]
 atlas = ExtResource("6_njfb8")
@@ -294,3 +295,5 @@ position = Vector2(1.7142859, 44)
 rotation = 1.5707964
 scale = Vector2(1.75, 1.75)
 shape = SubResource("CapsuleShape2D_jlvxv")
+
+[node name="Hud" parent="." unique_id=1251275405 instance=ExtResource("10_h8cv0")]
