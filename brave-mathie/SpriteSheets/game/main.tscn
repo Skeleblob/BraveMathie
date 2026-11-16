@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://bqh1qjho5xdqt"]
 
 [ext_resource type="PackedScene" uid="uid://i6nkcja5ce65" path="res://SpriteSheets/Scenes/StarterRoom/StarterRoom.tscn" id="1_2vr2y"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://bw6v7bpkg4no7" path="res://SpriteSheets/game/hud.tscn" id="2_ojw41"]
+=======
+[ext_resource type="PackedScene" uid="uid://c18r5g0aqwkyp" path="res://SpriteSheets/Scenes/ItemRoom/LeftRoom.tscn" id="2_a576r"]
+[ext_resource type="PackedScene" uid="uid://cir4xbu33dgyu" path="res://SpriteSheets/Scenes/EnemyRoom/TopRoom.tscn" id="3_mbegm"]
+>>>>>>> Stashed changes
 
 [node name="main" type="Node2D" unique_id=739777682]
+
+[node name="LeftRoom" parent="." unique_id=413198310 instance=ExtResource("2_a576r")]
+
+[node name="TopRoom" parent="." unique_id=270535472 instance=ExtResource("3_mbegm")]
 
 [node name="stage0" parent="." unique_id=1560415530 instance=ExtResource("1_2vr2y")]
 
