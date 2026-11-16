@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://bqh1qjho5xdqt"]
+[gd_scene format=3 uid="uid://diogpxs20mhrd"]
 
-[ext_resource type="PackedScene" uid="uid://i6nkcja5ce65" path="res://SpriteSheets/Scenes/StarterRoom/StarterRoom.tscn" id="1_2vr2y"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://bw6v7bpkg4no7" path="res://SpriteSheets/game/hud.tscn" id="2_ojw41"]
-=======
-[ext_resource type="PackedScene" uid="uid://c18r5g0aqwkyp" path="res://SpriteSheets/Scenes/ItemRoom/LeftRoom.tscn" id="2_a576r"]
-[ext_resource type="PackedScene" uid="uid://cir4xbu33dgyu" path="res://SpriteSheets/Scenes/EnemyRoom/TopRoom.tscn" id="3_mbegm"]
->>>>>>> Stashed changes
+[ext_resource type="PackedScene" uid="uid://cir4xbu33dgyu" path="res://SpriteSheets/Scenes/EnemyRoom/TopRoom.tscn" id="1_vu3gk"]
+[ext_resource type="PackedScene" uid="uid://c18r5g0aqwkyp" path="res://SpriteSheets/Scenes/ItemRoom/LeftRoom.tscn" id="2_rwe2m"]
+[ext_resource type="PackedScene" uid="uid://c1fqewtt5rtfa" path="res://SpriteSheets/Scenes/BossRoom/stage_0.tscn" id="3_pux07"]
+[ext_resource type="PackedScene" uid="uid://i6nkcja5ce65" path="res://SpriteSheets/Scenes/StarterRoom/StarterRoom.tscn" id="4_2ftc5"]
+[ext_resource type="PackedScene" uid="uid://bw6v7bpkg4no7" path="res://SpriteSheets/game/hud.tscn" id="5_cevjx"]
 
-[node name="main" type="Node2D" unique_id=739777682]
+[node name="Main" type="Node2D" unique_id=1958485771]
 
-[node name="LeftRoom" parent="." unique_id=413198310 instance=ExtResource("2_a576r")]
+[node name="TopRoom" parent="." unique_id=270535472 instance=ExtResource("1_vu3gk")]
 
-[node name="TopRoom" parent="." unique_id=270535472 instance=ExtResource("3_mbegm")]
+[node name="LeftRoom" parent="." unique_id=413198310 instance=ExtResource("2_rwe2m")]
 
-[node name="stage0" parent="." unique_id=1560415530 instance=ExtResource("1_2vr2y")]
+[node name="stage1" parent="." unique_id=1560415530 instance=ExtResource("3_pux07")]
 
-[node name="Hud" parent="." unique_id=1251275405 instance=ExtResource("2_ojw41")]
+[node name="stage0" parent="." unique_id=1933991975 instance=ExtResource("4_2ftc5")]
+
+[node name="Hud" parent="." unique_id=1251275405 instance=ExtResource("5_cevjx")]
