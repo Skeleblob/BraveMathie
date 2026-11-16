@@ -1,7 +1,10 @@
 class_name Player
 extends CharacterBody2D
 
+const PLAYER_ATTACK = preload("res://SpriteSheets/game/player_attack.tscn")
 var animSprite : AnimatedSprite2D
+var can_shoot = true
+var attack_cooldown = 0.5
 
 func _ready() -> void:
 	animSprite = $AnimatedSprite2D
@@ -39,6 +42,30 @@ func _process(_delta: float) -> void:
 	velocity = velocity.normalized()
 	velocity *= 175 * scale.x
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("shoot_up") or Input.is_action_just_pressed("shoot_down") or Input.is_action_just_pressed("shoot_left") or Input.is_action_just_pressed("shoot_right"):
+		shoot()
+
+func shoot():	
+	if not can_shoot:
+		return
+	var direction = Input.get_vector(
+		"shoot_left",
+		"shoot_right",
+		"shoot_up",
+		"shoot_down"
+	)
+	if direction == Vector2.ZERO:
+		return 
+	can_shoot = false
+	var attack = PLAYER_ATTACK.instantiate()
+	attack.direction = direction.normalized()
+	attack.global_position = global_position
+	attack.rotation = direction.angle() + deg_to_rad(180)
+	
+	get_tree().current_scene.add_child(attack)
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_shoot = true
 
 	
 	
