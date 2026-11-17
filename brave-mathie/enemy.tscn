@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://do2dbu3nfxad"]
+
+[ext_resource type="Script" uid="uid://0chminf2crtr" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://dulhxm07vvc7n" path="res://SpriteSheets/Enemies/Lektieenemie.png" id="2_qi2p4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 0, 100, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 180, 100, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yqyl"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 360, 100, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yeiif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iifgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yqyl")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
+size = Vector2(591, 580)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_om7lw"]
+radius = 26.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1845639125]
+motion_mode = 1
+script = ExtResource("1_4gyqm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=140023997]
+texture_filter = 1
+position = Vector2(651, 343)
+sprite_frames = SubResource("SpriteFrames_yeiif")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.41663995
+
+[node name="detection_area" type="Area2D" parent="." unique_id=533211640]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1455283434]
+position = Vector2(655, 335)
+shape = SubResource("RectangleShape2D_vnn0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417156826]
+position = Vector2(656, 332)
+shape = SubResource("CircleShape2D_om7lw")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

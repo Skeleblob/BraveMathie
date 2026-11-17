@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxky8h3pniwdv" path="res://Scripts/Doors/Doors.tscn" id="2_1kmu6"]
 [ext_resource type="PackedScene" uid="uid://j4e0j6ctqbbg" path="res://SpriteSheets/game/Player.tscn" id="3_3ww80"]
 [ext_resource type="Script" uid="uid://cxpef17y8ncwi" path="res://Scripts/Level.gd" id="4_level"]
+[ext_resource type="PackedScene" uid="uid://do2dbu3nfxad" path="res://enemy.tscn" id="5_el7do"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqjsd"]
 size = Vector2(1150, 105)
@@ -68,5 +69,8 @@ position = Vector2(57, -130)
 position = Vector2(555.99994, 423.99997)
 scale = Vector2(1.75, 1.75)
 motion_mode = 1
+
+[node name="Enemy" parent="." unique_id=1845639125 instance=ExtResource("5_el7do")]
+position = Vector2(288, -164)
 
 [editable path="Node/Doors"]
