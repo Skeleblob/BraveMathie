@@ -33,18 +33,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
-size = Vector2(591, 580)
+size = Vector2(679, 654)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_om7lw"]
 radius = 26.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1845639125]
+collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=140023997]
 texture_filter = 1
-position = Vector2(651, 343)
+position = Vector2(1, 13)
 sprite_frames = SubResource("SpriteFrames_yeiif")
 animation = &"Idle"
 autoplay = "Idle"
@@ -52,14 +53,16 @@ frame_progress = 0.41663995
 
 [node name="detection_area" type="Area2D" parent="." unique_id=533211640]
 collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1455283434]
-position = Vector2(655, 335)
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_vnn0b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417156826]
-position = Vector2(656, 332)
+position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_om7lw")
+
+[node name="Timer" type="Timer" parent="." unique_id=95552332]
+autostart = true
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

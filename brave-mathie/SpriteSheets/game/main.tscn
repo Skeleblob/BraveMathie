@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://diogpxs20mhrd"]
+[gd_scene format=3 uid="uid://bqh1qjho5xdqt"]
 
 [ext_resource type="PackedScene" uid="uid://cir4xbu33dgyu" path="res://SpriteSheets/Scenes/EnemyRoom/TopRoom.tscn" id="1_vu3gk"]
 [ext_resource type="PackedScene" uid="uid://c18r5g0aqwkyp" path="res://SpriteSheets/Scenes/ItemRoom/LeftRoom.tscn" id="2_rwe2m"]
@@ -7,10 +7,10 @@
 
 [node name="Main" type="Node2D" unique_id=1958485771]
 
-[node name="TopRoom" parent="." unique_id=270535472 instance=ExtResource("1_vu3gk")]
-
 [node name="LeftRoom" parent="." unique_id=413198310 instance=ExtResource("2_rwe2m")]
 
 [node name="stage1" parent="." unique_id=1560415530 instance=ExtResource("3_pux07")]
+
+[node name="TopRoom" parent="." unique_id=270535472 instance=ExtResource("1_vu3gk")]
 
 [node name="stage0" parent="." unique_id=1933991975 instance=ExtResource("4_2ftc5")]
