@@ -46,26 +46,31 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot_up") or Input.is_action_just_pressed("shoot_down") or Input.is_action_just_pressed("shoot_left") or Input.is_action_just_pressed("shoot_right"):
 		shoot()
 
-func shoot():	
+func shoot():
 	if not can_shoot:
 		return
+
+	can_shoot = false
+
+	await get_tree().create_timer(0.08).timeout
+
 	var direction = Input.get_vector(
 		"shoot_left",
 		"shoot_right",
 		"shoot_up",
 		"shoot_down"
 	)
-	if direction == Vector2.ZERO:
-		return 
-	can_shoot = false
-	var attack = PLAYER_ATTACK.instantiate()
-	attack.direction = direction.normalized()
-	attack.global_position = global_position
-	attack.rotation = direction.angle() + deg_to_rad(180)
-	
-	get_tree().current_scene.add_child(attack)
+
+	if direction != Vector2.ZERO:
+		var attack = PLAYER_ATTACK.instantiate()
+
+		attack.direction = direction.normalized()
+		attack.global_position = global_position
+		attack.rotation = direction.angle() + deg_to_rad(180)
+
+		get_tree().current_scene.add_child(attack)
+
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_shoot = true
-
 	
 	

@@ -1,7 +1,7 @@
 class_name Attack
 extends Area2D
 
-@export var speed: float = 400.0
+@export var speed: float = 600.0
 @export var hit_damage: float = 10.0
 var direction: Vector2 = Vector2.ZERO
 
