@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://do2dbu3nfxad" path="res://enemy.tscn" id="5_el7do"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqjsd"]
-size = Vector2(1150, 105)
+size = Vector2(1150, 124.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75x5l"]
 size = Vector2(120, 650)
@@ -32,7 +32,7 @@ collision_layer = 5
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWallBody" unique_id=337799947]
-position = Vector2(578, 33)
+position = Vector2(578, 42.75)
 shape = SubResource("RectangleShape2D_sqjsd")
 
 [node name="leftWallBody" type="StaticBody2D" parent="." unique_id=1466945526]
@@ -78,5 +78,6 @@ position = Vector2(954, 181)
 
 [node name="player" parent="." unique_id=548740340 instance=ExtResource("3_3ww80")]
 scale = Vector2(1.75, 1.75)
+collision_layer = 3
 
 [editable path="Node/Doors"]
