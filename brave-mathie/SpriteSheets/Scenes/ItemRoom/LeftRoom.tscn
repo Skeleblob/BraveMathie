@@ -62,7 +62,7 @@ spawn_direction = "left"
 position = Vector2(1090, 331)
 
 [node name="Spawn" parent="Node/Doors" index="1" unique_id=79308912]
-position = Vector2(993, 339)
+position = Vector2(970, 309)
 
 [node name="player" parent="." unique_id=548740340 instance=ExtResource("3_o33c5")]
 scale = Vector2(1.75, 1.75)

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cn4e37q6oua7r"]
+
+[ext_resource type="Script" uid="uid://cxpef17y8ncwi" path="res://Scripts/Level.gd" id="1_n3llf"]
+[ext_resource type="Texture2D" uid="uid://56n76dtihi2v" path="res://SpriteSheets/Scenes/BossRoom/Bossroom.png" id="2_w7vpq"]
+[ext_resource type="PackedScene" uid="uid://cxky8h3pniwdv" path="res://Scripts/Doors/Doors.tscn" id="3_5d2cf"]
+[ext_resource type="PackedScene" uid="uid://j4e0j6ctqbbg" path="res://SpriteSheets/game/Player.tscn" id="4_w7vpq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7vpq"]
+size = Vector2(1150, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d2cf"]
+size = Vector2(120, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_002yn"]
+size = Vector2(1150, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gc3xd"]
+size = Vector2(120, 650)
+
+[node name="RightRoom" type="Node2D" unique_id=1781930087]
+script = ExtResource("1_n3llf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1539929344]
+texture_filter = 1
+position = Vector2(575, 325)
+scale = Vector2(3.85, 3.25)
+texture = ExtResource("2_w7vpq")
+
+[node name="Node" type="Node" parent="." unique_id=466737922]
+
+[node name="Doors" parent="Node" unique_id=1765760922 instance=ExtResource("3_5d2cf")]
+door_tag = "BossDoor2"
+destination_level_tag = "StarterRoom"
+destination_door_tag = "BossDoor"
+spawn_direction = "right"
+
+[node name="CollisionShape2D" parent="Node/Doors" index="0" unique_id=130718312]
+position = Vector2(77, 338)
+
+[node name="Spawn" parent="Node/Doors" index="1" unique_id=79308912]
+position = Vector2(223, 304)
+
+[node name="player" parent="." unique_id=548740340 instance=ExtResource("4_w7vpq")]
+scale = Vector2(1.75, 1.75)
+
+[node name="BottomWallBody" type="StaticBody2D" parent="." unique_id=993678810]
+collision_layer = 5
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWallBody" unique_id=247231546]
+position = Vector2(578, 33)
+shape = SubResource("RectangleShape2D_w7vpq")
+
+[node name="leftWallBody" type="StaticBody2D" parent="." unique_id=1583905272]
+collision_layer = 5
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftWallBody" unique_id=923231023]
+position = Vector2(38, 326)
+shape = SubResource("RectangleShape2D_5d2cf")
+
+[node name="rightWallBody" type="StaticBody2D" parent="." unique_id=459764328]
+collision_layer = 5
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightWallBody" unique_id=384307010]
+position = Vector2(572, 602)
+shape = SubResource("RectangleShape2D_002yn")
+
+[node name="topWallBody" type="StaticBody2D" parent="." unique_id=905078729]
+collision_layer = 5
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topWallBody" unique_id=71265150]
+position = Vector2(1111, 321)
+shape = SubResource("RectangleShape2D_gc3xd")
+
+[editable path="Node/Doors"]

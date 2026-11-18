@@ -65,15 +65,29 @@ spawn_direction = "down"
 [node name="Spawn" parent="TopDoor" index="1" unique_id=79308912]
 position = Vector2(59, 163)
 
-[node name="Doors" parent="." unique_id=1765760922 instance=ExtResource("4_door")]
+[node name="ItemDoor" parent="." unique_id=1765760922 instance=ExtResource("4_door")]
 position = Vector2(14, 264)
 door_tag = "LeftDoor"
 destination_level_tag = "LeftRoom"
 destination_door_tag = "RightDoor"
 spawn_direction = "right"
 
-[node name="Spawn" parent="Doors" index="1" unique_id=79308912]
+[node name="Spawn" parent="ItemDoor" index="1" unique_id=79308912]
 position = Vector2(150, 63)
 
+[node name="BossDoor1" parent="." unique_id=913665569 instance=ExtResource("4_door")]
+position = Vector2(1110, 318)
+door_tag = "BossDoor"
+destination_level_tag = "RightRoom"
+destination_door_tag = "BossDoor2"
+spawn_direction = "left"
+
+[node name="CollisionShape2D" parent="BossDoor1" index="0" unique_id=130718312]
+position = Vector2(-41, 21)
+
+[node name="Spawn" parent="BossDoor1" index="1" unique_id=79308912]
+position = Vector2(-140, 19)
+
 [editable path="TopDoor"]
-[editable path="Doors"]
+[editable path="ItemDoor"]
+[editable path="BossDoor1"]
