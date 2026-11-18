@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ck33f724ayn0u"]
 
-[ext_resource type="Script" uid="uid://d2hpa06yeemmw" path="res://RedStar.gd" id="1_yafcq"]
+[ext_resource type="Script" uid="uid://d2hpa06yeemmw" path="res://Scripts/attacks/RedStar.gd" id="1_yafcq"]
 [ext_resource type="Texture2D" uid="uid://ciyew3q1xiqqg" path="res://SpriteSheets/attacksprites/Enemyattackv2.png" id="2_0vk1c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uytmj"]
