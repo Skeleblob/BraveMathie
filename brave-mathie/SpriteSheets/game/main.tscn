@@ -8,9 +8,12 @@
 [node name="Main" type="Node2D" unique_id=1958485771]
 
 [node name="LeftRoom" parent="." unique_id=413198310 instance=ExtResource("2_rwe2m")]
+visible = false
 
 [node name="stage1" parent="." unique_id=1560415530 instance=ExtResource("3_pux07")]
+visible = false
 
 [node name="TopRoom" parent="." unique_id=270535472 instance=ExtResource("1_vu3gk")]
+visible = false
 
 [node name="stage0" parent="." unique_id=1933991975 instance=ExtResource("4_2ftc5")]

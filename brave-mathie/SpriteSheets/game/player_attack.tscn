@@ -218,7 +218,7 @@ animations = [{
 }]
 
 [node name="PlayerAttack" type="Area2D" unique_id=1020636906]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_pag5s")
 

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var speed: float = 100.0
 var backup_speed: float = 100.0
-var min_chase_distance: float = 200.0
+var min_chase_distance: float = 300.0
 var player_chase: bool = false
 var player: Node2D = null
 var shoot_cooldown: float = 0.0

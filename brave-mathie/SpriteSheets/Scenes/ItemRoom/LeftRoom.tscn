@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c18r5g0aqwkyp"]
 
+[ext_resource type="Script" uid="uid://cxpef17y8ncwi" path="res://Scripts/Level.gd" id="1_hdi0q"]
 [ext_resource type="Texture2D" uid="uid://rj67wqvn4snj" path="res://SpriteSheets/Scenes/ItemRoom/Leftroom.png" id="1_qd7dt"]
 [ext_resource type="PackedScene" uid="uid://cxky8h3pniwdv" path="res://Scripts/Doors/Doors.tscn" id="2_o33c5"]
 [ext_resource type="PackedScene" uid="uid://j4e0j6ctqbbg" path="res://SpriteSheets/game/Player.tscn" id="3_o33c5"]
@@ -17,6 +18,7 @@ size = Vector2(299.15585, 30.769234)
 size = Vector2(28.311646, 203.38463)
 
 [node name="LeftRoom" type="Node2D" unique_id=413198310]
+script = ExtResource("1_hdi0q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=809316366]
 texture_filter = 1
@@ -63,8 +65,6 @@ position = Vector2(1090, 331)
 position = Vector2(993, 339)
 
 [node name="player" parent="." unique_id=548740340 instance=ExtResource("3_o33c5")]
-position = Vector2(925.99994, 306.99997)
 scale = Vector2(1.75, 1.75)
-motion_mode = 1
 
 [editable path="Node/Doors"]
