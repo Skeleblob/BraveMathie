@@ -2,34 +2,9 @@
 
 [ext_resource type="Script" uid="uid://da0c6qmcsgpvg" path="res://SpriteSheets/game/hud.gd" id="1_8y5c0"]
 [ext_resource type="Texture2D" uid="uid://yivnn3wvmchv" path="res://misc/Whitepixelfornoahbaby.png" id="2_8y5c0"]
-
-[sub_resource type="GDScript" id="GDScript_8y5c0"]
-script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_lmjyp"]
-script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[ext_resource type="Script" uid="uid://cpxnsnpxqhw55" path="res://SpriteSheets/game/inventory_container.gd" id="2_k00xn"]
+[ext_resource type="Script" uid="uid://bdmt7im3qkdco" path="res://SpriteSheets/game/graph_grid.gd" id="3_1txq4"]
+[ext_resource type="Script" uid="uid://iuf23fcdiqs1" path="res://SpriteSheets/game/graph_canvas.gd" id="4_k00xn"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1251275405]
 script = ExtResource("1_8y5c0")
@@ -49,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("2_k00xn")
 
 [node name="BackgroundTexture" type="TextureRect" parent="InventoryContainer" unique_id=1378918601]
 modulate = Color(1, 1, 1, 0.6392157)
@@ -59,10 +35,22 @@ layout_mode = 2
 texture = ExtResource("2_8y5c0")
 
 [node name="Graph" type="Control" parent="InventoryContainer" unique_id=1385262880]
+custom_minimum_size = Vector2(350, 350)
+custom_maximum_size = Vector2(350, 350)
 layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="GraphGrid" type="Node2D" parent="InventoryContainer/Graph" unique_id=1668626526]
-script = SubResource("GDScript_8y5c0")
+script = ExtResource("3_1txq4")
 
 [node name="GraphCanvas" type="Node2D" parent="InventoryContainer/Graph" unique_id=452825292]
-script = SubResource("GDScript_lmjyp")
+position = Vector2(0, 350)
+script = ExtResource("4_k00xn")
+
+[node name="ItemGridContainer" type="GridContainer" parent="InventoryContainer" unique_id=1126133481]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+columns = 4
+
+[node name="OptionButton" type="OptionButton" parent="InventoryContainer" unique_id=1049696439]
+layout_mode = 2
