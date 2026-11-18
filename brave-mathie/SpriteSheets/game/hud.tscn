@@ -1,7 +1,35 @@
 [gd_scene format=3 uid="uid://bw6v7bpkg4no7"]
 
-[ext_resource type="Script" uid="uid://da0c6qmcsgpvg" path="res://hud.gd" id="1_8y5c0"]
+[ext_resource type="Script" uid="uid://da0c6qmcsgpvg" path="res://SpriteSheets/game/hud.gd" id="1_8y5c0"]
 [ext_resource type="Texture2D" uid="uid://yivnn3wvmchv" path="res://misc/Whitepixelfornoahbaby.png" id="2_8y5c0"]
+
+[sub_resource type="GDScript" id="GDScript_8y5c0"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_lmjyp"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Hud" type="CanvasLayer" unique_id=1251275405]
 script = ExtResource("1_8y5c0")
@@ -29,3 +57,12 @@ texture_filter = 1
 custom_minimum_size = Vector2(1000, 500)
 layout_mode = 2
 texture = ExtResource("2_8y5c0")
+
+[node name="Graph" type="Control" parent="InventoryContainer" unique_id=1385262880]
+layout_mode = 2
+
+[node name="GraphGrid" type="Node2D" parent="InventoryContainer/Graph" unique_id=1668626526]
+script = SubResource("GDScript_8y5c0")
+
+[node name="GraphCanvas" type="Node2D" parent="InventoryContainer/Graph" unique_id=452825292]
+script = SubResource("GDScript_lmjyp")
