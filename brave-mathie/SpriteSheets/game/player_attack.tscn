@@ -233,4 +233,3 @@ scale = Vector2(5.3095274, 5.306)
 sprite_frames = SubResource("SpriteFrames_lg3vi")
 animation = &"up_right"
 autoplay = "left"
-speed_scale = 0.5
