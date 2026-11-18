@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://diud8aisx0ol"]
+
+[ext_resource type="Script" uid="uid://86xavuhmtsfg" path="res://Boss.gd" id="1_36cl4"]
+[ext_resource type="Texture2D" uid="uid://n3kqc8refp1c" path="res://SpriteSheets/Enemies/AttackingKrille.png" id="2_y36xv"]
+[ext_resource type="Texture2D" uid="uid://5r0t76oxh2o5" path="res://SpriteSheets/Enemies/Krille.png" id="3_jeldn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t6jo"]
+atlas = ExtResource("2_y36xv")
+region = Rect2(0, 0, 180, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r5tj"]
+atlas = ExtResource("2_y36xv")
+region = Rect2(0, 180, 180, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giwls"]
+atlas = ExtResource("3_jeldn")
+region = Rect2(0, 0, 180, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a068l"]
+atlas = ExtResource("3_jeldn")
+region = Rect2(0, 180, 180, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yeiif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t6jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r5tj")
+}],
+"loop": 1,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giwls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a068l")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnn0b"]
+size = Vector2(972, 715.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yeiif"]
+radius = 55.145264
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1928594632]
+motion_mode = 1
+script = ExtResource("1_36cl4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1244479647]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_yeiif")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.7470177
+speed_scale = 1.5
+
+[node name="detection" type="Area2D" parent="." unique_id=962141603]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection" unique_id=1613557530]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_vnn0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=63872638]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_yeiif")
+
+[node name="Timer" type="Timer" parent="." unique_id=1724789440]
+autostart = true
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

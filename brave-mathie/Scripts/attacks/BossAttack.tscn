@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c88tavi2ei38u"]
+
+[ext_resource type="Script" uid="uid://d2hpa06yeemmw" path="res://Scripts/attacks/RedStar.gd" id="1_2j3u4"]
+[ext_resource type="Texture2D" uid="uid://d0tyhvhligxce" path="res://SpriteSheets/attacksprites/KOL.png" id="2_h5sjy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyx24"]
+atlas = ExtResource("2_h5sjy")
+region = Rect2(0, 0, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uga01"]
+atlas = ExtResource("2_h5sjy")
+region = Rect2(0, 80, 60, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b0bt"]
+atlas = ExtResource("2_h5sjy")
+region = Rect2(0, 160, 60, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yeiif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyx24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uga01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b0bt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnn0b"]
+radius = 8.0
+
+[node name="KOL" type="Area2D" unique_id=1919506202]
+collision_layer = 18
+collision_mask = 0
+script = ExtResource("1_2j3u4")
+metadata/_custom_type_script = "uid://d2hpa06yeemmw"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=978900816]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_yeiif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398153278]
+position = Vector2(1, 4)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_vnn0b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
