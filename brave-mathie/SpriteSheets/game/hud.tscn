@@ -44,7 +44,7 @@ size_flags_horizontal = 8
 script = ExtResource("3_1txq4")
 
 [node name="GraphCanvas" type="Node2D" parent="InventoryContainer/Graph" unique_id=452825292]
-position = Vector2(0, 350)
+position = Vector2(100, 250)
 script = ExtResource("4_k00xn")
 
 [node name="ItemGridContainer" type="GridContainer" parent="InventoryContainer" unique_id=1126133481]
@@ -52,5 +52,42 @@ custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 columns = 4
 
-[node name="OptionButton" type="OptionButton" parent="InventoryContainer" unique_id=1049696439]
+[node name="FunctionOptionButton" type="OptionButton" parent="InventoryContainer/ItemGridContainer" unique_id=1049696439]
 layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "ax+b"
+popup/item_0/id = 0
+popup/item_1/text = "ax^2+bx+c"
+popup/item_1/id = 1
+
+[node name="aValueOptionButton" type="OptionButton" parent="InventoryContainer/ItemGridContainer" unique_id=808386251]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "0"
+popup/item_1/id = 1
+popup/item_2/text = "2"
+popup/item_2/id = 2
+
+[node name="bValueOptionButton" type="OptionButton" parent="InventoryContainer/ItemGridContainer" unique_id=438647190]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "0"
+popup/item_0/id = 0
+popup/item_1/text = "1"
+popup/item_1/id = 1
+
+[node name="cValueOptionButton" type="OptionButton" parent="InventoryContainer/ItemGridContainer" unique_id=198215261]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "0"
+popup/item_0/id = 0
+popup/item_1/text = "1"
+popup/item_1/id = 1
+
+[connection signal="item_selected" from="InventoryContainer/ItemGridContainer/FunctionOptionButton" to="." method="_on_function_option_button_item_selected"]
+[connection signal="item_selected" from="InventoryContainer/ItemGridContainer/aValueOptionButton" to="." method="_on_a_value_option_button_item_selected"]
+[connection signal="item_selected" from="InventoryContainer/ItemGridContainer/bValueOptionButton" to="." method="_on_b_value_option_button_item_selected"]
+[connection signal="item_selected" from="InventoryContainer/ItemGridContainer/cValueOptionButton" to="." method="_on_c_value_option_button_item_selected"]
