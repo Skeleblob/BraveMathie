@@ -5,15 +5,53 @@ const PLAYER_ATTACK = preload("res://SpriteSheets/game/player_attack.tscn")
 var animSprite : AnimatedSprite2D
 var can_shoot = true
 var attack_cooldown = 0.5
+@export var max_health: int = 10
+var current_health: int
+var can_take_damage := true
+@export var damage_invincibility_time: float = 0.5
 
 func _ready() -> void:
+	add_to_group("player")
 	animSprite = $AnimatedSprite2D
+	current_health = max_health
 	
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	
 func _on_spawn(spawn_position: Vector2, _direction: String) -> void:
 	global_position = spawn_position
 
+func take_damage(amount: int) -> void:
+		if not can_take_damage:
+			return
+	
+		can_take_damage = false
+		current_health -= amount
+	
+		flash_when_damaged()
+	
+		if current_health <= 0:
+			die()
+			
+		await get_tree().create_timer(damage_invincibility_time).timeout
+		can_take_damage = true
+
+func die() -> void:
+	get_tree().reload_current_scene()
+	
+	set_physics_process(false)
+	set_process(false)
+
+func flash_when_damaged() -> void:
+	var tween := create_tween()
+	
+	tween.tween_property(
+		animSprite, "modulate", Color.DARK_RED,0.2
+	)
+	
+	tween.tween_property(
+		animSprite,"modulate",Color.WHITE,0.2
+	)
+	
 func _process(_delta: float) -> void:
 	velocity = Vector2()
 	

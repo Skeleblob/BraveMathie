@@ -280,6 +280,9 @@ animations = [{
 radius = 4.0
 height = 24.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnn0b"]
+height = 68.0
+
 [node name="player" type="CharacterBody2D" unique_id=548740340]
 script = ExtResource("1_6n8kb")
 
@@ -297,3 +300,10 @@ scale = Vector2(1.75, 1.75)
 shape = SubResource("CapsuleShape2D_jlvxv")
 
 [node name="Hud" parent="." unique_id=1251275405 instance=ExtResource("10_h8cv0")]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1087106792]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1131907232]
+position = Vector2(2, 12)
+shape = SubResource("CapsuleShape2D_vnn0b")
+debug_color = Color(0.8324521, 0.2147673, 0.27073544, 0.41960785)
