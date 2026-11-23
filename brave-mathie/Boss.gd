@@ -8,7 +8,7 @@ var player: Node2D = null
 var shoot_cooldown: float = 0.0
 var attack_animation_timer: float = 0.0
 var attack_animation_duration: float = 1.0
-
+@export var health: float
 
 const BossEnemyAttackScene = preload("res://Scripts/attacks/BossAttack.tscn")
 

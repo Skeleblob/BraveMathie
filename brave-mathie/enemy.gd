@@ -6,10 +6,32 @@ var min_chase_distance: float = 300.0
 var player_chase: bool = false
 var player: Node2D = null
 var shoot_cooldown: float = 0.0
-
+var current_health: float
+@export var health: float = 75.0
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const EnemyAttackScene = preload("res://Scripts/attacks/enemyattacks.tscn")
 
+func _ready() -> void:
+	current_health = health
+	
+	
+func take_damage(damage: float) -> void:
+	if current_health <= 0:
+		return
+	
+	current_health -= damage
+	sprite.modulate = Color.DARK_RED
+	
+	var tween := create_tween()
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.2)
+	
+	if current_health <= 0.0:
+		die()
+
+func die() -> void:
+	queue_free()
+	
 func _physics_process(_delta: float) -> void:
 	if not player_chase or not is_instance_valid(player):
 		return

@@ -75,6 +75,7 @@ position = Vector2(57, -130)
 
 [node name="Enemy" parent="." unique_id=1845639125 instance=ExtResource("5_el7do")]
 position = Vector2(954, 181)
+health = 75.0
 
 [node name="player" parent="." unique_id=548740340 instance=ExtResource("3_3ww80")]
 scale = Vector2(1.75, 1.75)
