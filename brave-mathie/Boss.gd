@@ -8,6 +8,7 @@ var player: Node2D = null
 var shoot_cooldown: float = 0.0
 var attack_animation_timer: float = 0.0
 var attack_animation_duration: float = 1.0
+var current_health: float
 @export var health: float
 
 const BossEnemyAttackScene = preload("res://Scripts/attacks/BossAttack.tscn")
@@ -15,8 +16,24 @@ const BossEnemyAttackScene = preload("res://Scripts/attacks/BossAttack.tscn")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
+	current_health = health
 	animated_sprite.play("Idle")
+
+func take_damage(damage: float) -> void:
+	if current_health <= 0:
+		return
 	
+	current_health -= damage
+	animated_sprite.modulate = Color.DARK_RED
+	
+	var tween := create_tween()
+	tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.2)
+	
+	if current_health <= 0.0:
+		die()
+
+func die() -> void:
+	queue_free()
 
 func _physics_process(_delta: float) -> void:
 	if attack_animation_timer > 0.0:
