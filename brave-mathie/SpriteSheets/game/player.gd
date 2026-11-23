@@ -17,6 +17,10 @@ func _ready() -> void:
 	
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	
+	print(Supabase.config)
+	print(Supabase.database)
+	DatabaseManager.collect_number(37)
+	
 func _on_spawn(spawn_position: Vector2, _direction: String) -> void:
 	global_position = spawn_position
 
@@ -111,4 +115,5 @@ func shoot():
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_shoot = true
 	
+
 	

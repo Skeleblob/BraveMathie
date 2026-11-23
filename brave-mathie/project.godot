@@ -18,11 +18,19 @@ config/icon="res://icon.svg"
 [autoload]
 
 NavigationManager="*uid://cf4b60x6immsf"
+Supabase="*uid://cdgr7mqxwtvkr"
+InventoryManager="*uid://coe3lostcwype"
+AuthManager="*uid://bpsg0xaobhkv4"
+DatabaseManager="*uid://cu4hbw7vuvcpp"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
 
 [input]
 
@@ -87,3 +95,8 @@ shoot_down={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[supabase]
+
+config/supabase_url="https://ookmhlyweeurwimnosgj.supabase.co"
+config/supabase_key="sb_publishable_dkh6zlxHlcFXV5INyD7NxA_1Yz7JpH1"
