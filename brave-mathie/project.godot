@@ -22,6 +22,7 @@ Supabase="*uid://cdgr7mqxwtvkr"
 InventoryManager="*uid://coe3lostcwype"
 AuthManager="*uid://bpsg0xaobhkv4"
 DatabaseManager="*uid://cu4hbw7vuvcpp"
+GameData="*uid://g64txsed35ud"
 
 [display]
 

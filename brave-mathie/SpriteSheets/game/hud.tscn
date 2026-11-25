@@ -10,6 +10,7 @@
 script = ExtResource("1_8y5c0")
 
 [node name="InventoryContainer" type="CenterContainer" parent="." unique_id=1173887699]
+clip_children = 2
 custom_minimum_size = Vector2(200, 150)
 anchors_preset = 8
 anchor_left = 0.5
