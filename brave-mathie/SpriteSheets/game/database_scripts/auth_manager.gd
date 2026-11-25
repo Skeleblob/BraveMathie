@@ -3,7 +3,7 @@ extends Node
 const SAVE_PATH = "user://auth.cfg"
 
 var is_logged_in: bool = false
-
+signal login_succeeded
 
 func _ready() -> void:
 	Supabase.auth.signed_in_anonymous.connect(_on_login_success)
@@ -24,15 +24,17 @@ func _on_login_success(user: SupabaseUser) -> void:
 	is_logged_in = true
 	_save_refresh_token(user.refresh_token)
 
-	print("Anonymous login successful!")
-
-	DatabaseManager.get_inventory()
+	login_succeeded.emit()
+	DatabaseManager.load_player_data()
 
 
 func _on_token_refreshed(user: SupabaseUser) -> void:
-	_save_refresh_token(user.refresh_token)
-	print("Session refreshed and saved.")
+	if not is_logged_in:
+		is_logged_in = true
+	print("Session restored successfully!")
 
+	login_succeeded.emit()
+	DatabaseManager.load_player_data()
 
 func _on_auth_error(auth_error) -> void:
 	is_logged_in = false

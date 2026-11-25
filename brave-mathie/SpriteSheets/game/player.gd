@@ -17,7 +17,9 @@ func _ready() -> void:
 	
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	
-	
+	if not AuthManager.is_logged_in:
+		await AuthManager.login_succeeded
+
 	
 func _on_spawn(spawn_position: Vector2, _direction: String) -> void:
 	global_position = spawn_position

@@ -1,13 +1,47 @@
 extends Node
 
-var inventory: Array[int] = [5, 12, 37]
+var inventory: Array[int] = []
+var active_numbers: Dictionary = {}
+
 signal inventory_updated
+signal active_numbers_updated	
+signal login_succeeded
 
+func load_player_data() -> void:
+	if not AuthManager.is_logged_in:
+		await AuthManager.login_succeeded
+
+	get_inventory()
+	get_active_numbers()
+
+
+# INVENTORY ------------------------------------------------
+
+func get_inventory() -> void:
+	var query = SupabaseQuery.new()
+	query.from("inventory").select()
+
+	var task = Supabase.database.query(query)
+	task.completed.connect(_on_inventory_received)
+
+
+func _on_inventory_received(task: BaseTask) -> void:
+	if task.error != null:
+		print("INVENTORY ERROR: ", task.error)
+		return
+
+	inventory.clear()
+
+	for item in task.data:
+		inventory.append(int(item["number"]))
+
+	print("PLAYER INVENTORY: ", inventory)
+	inventory_updated.emit()
+	
 func collect_number(number: int) -> void:
-
 	if not AuthManager.is_logged_in:
 		print("Waiting for login...")
-		await AuthManager.login_succeeded
+		return
 
 	print("Collecting number: ", number)
 
@@ -20,7 +54,6 @@ func collect_number(number: int) -> void:
 
 
 func _on_collect_completed(task: BaseTask, number: int) -> void:
-
 	if task.error != null:
 		print("DATABASE ERROR: ", task.error)
 		return
@@ -31,37 +64,34 @@ func _on_collect_completed(task: BaseTask, number: int) -> void:
 
 		print("NUMBER COLLECTED: ", number)
 		print("CURRENT INVENTORY: ", inventory)
-
 		inventory_updated.emit()
 	else:
 		print("Number already collected!")
 
 
-func get_inventory() -> void:
+# ACTIVE NUMBERS -------------------------------------------
 
-	if not AuthManager.is_logged_in:
-		print("Waiting for login...")
-		await AuthManager.login_succeeded
-
+func get_active_numbers() -> void:
 	var query = SupabaseQuery.new()
-	query.from("inventory").select()
+	query.from("active_numbers").select()
 
 	var task = Supabase.database.query(query)
-	task.completed.connect(_on_inventory_received)
+	task.completed.connect(_on_active_numbers_received)
 
 
-func _on_inventory_received(task: BaseTask) -> void:
-
+func _on_active_numbers_received(task: BaseTask) -> void:
 	if task.error != null:
-		print("INVENTORY ERROR: ", task.error)
+		print("ACTIVE NUMBERS ERROR: ", task.error)
 		return
 
-	inventory.clear()
+	active_numbers.clear()
 
-	for row in task.data:
-		inventory.append(int(row["number"]))
+	for item in task.data:
+		var slot = int(item["slot"])
+		var number = int(item["number"])
 
-	print("PLAYER INVENTORY: ", inventory)
+		active_numbers[slot] = number
 
-	inventory_updated.emit()
-	print(DatabaseManager.inventory)
+	print("ACTIVE NUMBERS: ", active_numbers)
+	active_numbers_updated.emit()
+	
