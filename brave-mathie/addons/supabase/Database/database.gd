@@ -55,16 +55,34 @@ func _process_task(task : DatabaseTask) -> void:
 	_pooled_tasks.append(task)
 	task.push_request(httprequest)
 
-# .............. HTTPRequest completed
-func _on_task_completed(task : DatabaseTask) -> void:
-	if task.data!=null and not task.data.is_empty():    
+
+func _on_task_completed(task: DatabaseTask) -> void:
+
+	if task.error != null:
+		emit_signal("error", task.error)
+
+	elif task.data != null:
+		if task.data is Array or task.data is Dictionary:
+			if task.data.is_empty():
+				_pooled_tasks.erase(task)
+				return
+
 		match task._code:
-			SupabaseQuery.REQUESTS.SELECT: emit_signal("selected", task.data)
-			SupabaseQuery.REQUESTS.INSERT: emit_signal("inserted", task.data)
-			SupabaseQuery.REQUESTS.UPDATE: emit_signal("updated", task.data)
-			SupabaseQuery.REQUESTS.DELETE: emit_signal("deleted", task.data)
+			SupabaseQuery.REQUESTS.SELECT:
+				emit_signal("selected", task.data)
+
+			SupabaseQuery.REQUESTS.INSERT:
+				emit_signal("inserted", task.data)
+
+			SupabaseQuery.REQUESTS.UPDATE:
+				emit_signal("updated", task.data)
+
+			SupabaseQuery.REQUESTS.DELETE:
+				emit_signal("deleted", task.data)
+
 			_:
 				emit_signal("rpc_completed", task.data)
-	elif task.error != null:
-		emit_signal("error", task.error)
+
 	_pooled_tasks.erase(task)
+	
+	

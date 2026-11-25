@@ -348,3 +348,19 @@ func _tcp_stream_timer() -> void:
 	var peer : StreamPeer = tcp_server.take_connection()
 	# ! to be implemented
 	pass
+
+
+func restore_session(saved_refresh_token: String) -> AuthTask:
+	var payload := {
+		"refresh_token": saved_refresh_token
+	}
+
+	var task := AuthTask.new()._setup(
+		AuthTask.Task.REFRESH,
+		_config.supabaseUrl + _refresh_token_endpoint,
+		_header,
+		JSON.stringify(payload)
+	)
+
+	_process_task(task)
+	return task
