@@ -38,10 +38,9 @@ func _on_inventory_received(task: BaseTask) -> void:
 	print("PLAYER INVENTORY: ", inventory)
 	inventory_updated.emit()
 	
-func collect_number(number: int) -> void:
+func collect_number(number: int, pickup: Area2D = null) -> void:
 	if not AuthManager.is_logged_in:
-		print("Waiting for login...")
-		return
+		await AuthManager.login_succeeded
 
 	print("Collecting number: ", number)
 
@@ -50,23 +49,41 @@ func collect_number(number: int) -> void:
 		{"p_number": number}
 	)
 
-	task.completed.connect(_on_collect_completed.bind(number))
+	task.completed.connect(
+		_on_collect_completed.bind(number, pickup)
+	)
 
 
-func _on_collect_completed(task: BaseTask, number: int) -> void:
+func _on_collect_completed(
+	task: BaseTask,
+	number: int,
+	pickup: Area2D
+) -> void:
 	if task.error != null:
 		print("DATABASE ERROR: ", task.error)
+
+		if is_instance_valid(pickup):
+			pickup.collection_finished(false)
+
 		return
 
 	if task.data == true:
 		if not inventory.has(number):
 			inventory.append(number)
 
-		print("NUMBER COLLECTED: ", number)
-		print("CURRENT INVENTORY: ", inventory)
-		inventory_updated.emit()
+	print("NUMBER COLLECTED: ", number)
+	print("CURRENT INVENTORY: ", inventory)
+
+	inventory_updated.emit()
+
+	if is_instance_valid(pickup):
+		pickup.collection_finished(true)
+
 	else:
 		print("Number already collected!")
+
+		if is_instance_valid(pickup):
+			pickup.collection_finished(false)
 
 
 # ACTIVE NUMBERS -------------------------------------------
@@ -94,4 +111,33 @@ func _on_active_numbers_received(task: BaseTask) -> void:
 
 	print("ACTIVE NUMBERS: ", active_numbers)
 	active_numbers_updated.emit()
+
+
+func replace_active_number(slot: int, number: int) -> void:
+	if not AuthManager.is_logged_in:
+		await AuthManager.login_succeeded
+
+	print("Equipping ", number, " in slot ", slot)
+
+	var task = Supabase.database.Rpc(
+		"replace_active_number",
+		{
+			"p_slot": slot,
+			"p_new_number": number
+		}
+	)
+
+	task.completed.connect(_on_replace_completed.bind(slot, number))
+
+
+func _on_replace_completed(task: BaseTask, slot: int, number: int) -> void:
+	if task.error != null:
+		print("EQUIP ERROR: ", task.error)
+		return
+
+	print("EQUIPPED ", number, " IN SLOT ", slot)
+
+	# Reload inventory and equipped numbers from Supabase
+	load_player_data()
+
 	
